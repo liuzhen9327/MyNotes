@@ -1,6 +1,7 @@
 ﻿﻿### 将jar做成pom
-
-`mvn install:install-file  -DgroupId=taobao -DartifactId=sms -Dversion=1.0 -Dpackaging=jar -Dfile=/Users/admin/Downloads/sdk-java-2016-06-07/taobao-sdk-java-auto_1455552377940-20160607.jar`
+```
+mvn install:install-file  -DgroupId=taobao -DartifactId=sms -Dversion=1.0 -Dpackaging=jar -Dfile=/Users/admin/Downloads/sdk-java-2016-06-07/taobao-sdk-java-auto_1455552377940-20160607.jar
+```
 
 
 
