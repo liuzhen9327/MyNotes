@@ -1,4 +1,4 @@
-###查看端口占用情况
+### 查看端口占用情况
 
 ```
 
@@ -6,7 +6,7 @@ netstat -anp|grep 8080
 
 ```
 
-###文件夹赋权给用户
+### 文件夹赋权给用户
 
 ```
 
@@ -33,7 +33,7 @@ chmod 777 xxx.sh
 
 ```
 
-###卸载openjdk
+### 卸载openjdk
 
 ```
 
@@ -44,7 +44,7 @@ rpm -e --nodeps java-1.6.0-openjdk-1.6.0.0-1.7.b09.el5
 
 ```
 
-###安装JDK
+### 安装JDK
 
 ```
 
@@ -56,7 +56,7 @@ rpm -ivh jdk
 
 ```
 
-###tomcat
+### tomcat
 
 ```
 
@@ -64,7 +64,7 @@ wget http://apache.fayea.com/tomcat/tomcat-8/v8.5.5/bin/apache-tomcat-8.5.5.tar.
 
 ```
 
-###安装nginx
+### 安装nginx
 
 ```
 
@@ -80,7 +80,7 @@ service nginx start
 
 ```
 
-###安装service
+### 安装service
 
 ```
 
@@ -88,7 +88,7 @@ yum install -y system-config-services
 
 ```
 
-###安装redis
+### 安装redis
 
 ```
 
@@ -102,7 +102,7 @@ http://www.tuicool.com/articles/aQbQ3u
 
 ```
 
-###清空redis所有key
+### 清空redis所有key
 
 ```
 
@@ -110,7 +110,7 @@ redis-cli -a ! keys "*" | xargs redis-cli -a ! del
 
 ```
 
-###开启端口给外网
+### 开启端口给外网
 
 ```
 
@@ -118,7 +118,7 @@ http://chwshuang.iteye.com/blog/1881391
 
 ```
 
-###FTP搭建
+### FTP搭建
 
 ```
 
