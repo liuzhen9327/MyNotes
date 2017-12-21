@@ -21,4 +21,6 @@ yum install -y --setopt=obsoletes=0 \
 sudo systemctl enable docker
 
 sudo systemctl start docker
+
+docker info |grep d_type
 ```
