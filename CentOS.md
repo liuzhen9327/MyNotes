@@ -1,10 +1,20 @@
 ### 查看端口占用情况
-
+rsync -av dir targetdir
 ```
 
 netstat -anp|grep 8080
 
 ```
+
+### 防火墙
+
+```
+Failed to Setup IP tables: Unable to enable SKIP DNAT rule: iptables -t filter -N DOCKER
+防火墙状态: firewall-cmd --state
+systemctl stop firewalld.service
+systemctl disable firewalld.service
+```
+
 
 ### 文件夹赋权给用户
 
