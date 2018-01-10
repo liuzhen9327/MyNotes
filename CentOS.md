@@ -6,6 +6,12 @@ netstat -anp|grep 8080
 
 ```
 
+### telnet安装
+
+```
+yum -y install xinetd telnet telnet-server
+```
+
 ### 防火墙
 
 ```
