@@ -36,6 +36,8 @@ vi /etc/docker/daemon.json
   "bip": "99.99.99.1/16"
 }
 
+rm -rf /var/lib/docker/*
+
 systemctl start docker
 
 ip route 查看docker0路由 是否为: 99.99.0.0/16 dev docker0  proto kernel  scope link  src 99.99.99.1
