@@ -12,6 +12,16 @@ netstat -anp|grep 8080
 yum -y install xinetd telnet telnet-server
 ```
 
+### crontab 定时执行脚本
+
+```
+clear-docker-log.sh :
+#!/bin/sh
+truncate -s 0 /var/lib/docker/containers/*/*-json.log
+
+
+```
+
 ### 防火墙
 
 ```
