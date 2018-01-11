@@ -25,28 +25,47 @@ sudo systemctl start docker
 docker info |grep d_type
 ```
 
+### 安装完成后修改docker 172.17网段
 
-docker stop a761111daee5
-docker stop 486d8e019e01
-docker stop 0ea5b2994999
-docker stop ea5bc123409a
-docker stop b88cdc1e3dd1
-docker stop 0a0a4f03119a
-docker stop 497ac338c01b
-docker stop 479bd971b728
-docker stop 1aab6886e51c
-docker stop e7cb0938ee0b
+```
+systemctl stop docker
 
+vi /etc/docker/daemon.json
+添加:
+{
+  "bip": "99.99.99.1/16"
+}
 
+systemctl start docker
 
+ip route 查看docker0路由 是否为: 99.99.0.0/16 dev docker0  proto kernel  scope link  src 99.99.99.1
 
-docker start a761111daee5
-docker start 486d8e019e01
-docker start 0ea5b2994999
-docker start ea5bc123409a
-docker start b88cdc1e3dd1
-docker start 0a0a4f03119a
-docker start 497ac338c01b
-docker start 479bd971b728
-docker start 1aab6886e51c
-docker start e7cb0938ee0b
+```
+
+### 部署应用时, 修改docker 172.18,19网段
+
+```
+编写yaml文件前, 先在宿主机执行: docker network create --driver=bridge --subnet=66.66.66.0/16 br0
+
+然后在yaml的network中指定刚刚创建的network. 如下
+
+version: '2'
+services:
+  pdadoctor:
+    logging:
+      driver: json-file
+      options:
+        max-file: '3'
+        max-size: 100m
+    image: daocloud.io/tdcare/tdnis_pda_doctor:2.0.0.20170830
+    entrypoint: /setVersion.sh 2.0.0.2017080
+    environment:
+    - eureka.instance.hostname=pdadoctor
+    networks:
+    - demo-back-tier
+networks:
+  demo-back-tier:
+    external:
+          name: br0
+
+```
