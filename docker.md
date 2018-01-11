@@ -70,4 +70,22 @@ networks:
     external:
           name: br0
 
+应用创建完成后 查看docker容器ip:
+[root@i-uy96hjjz ~]# docker ps
+CONTAINER ID        IMAGE                                                COMMAND                  CREATED             STATUS              PORTS               NAMES
+b24be87adc89        daocloud.io/tdcare/tdnis_pda_doctor:2.0.0.20170830   "/setVersion.sh 2...."   27 minutes ago      Up 27 minutes       80/tcp, 443/tcp     HENGYANG-NANHUA-FUER-YIYUAN-QingCloud1_pdadoctor_1
+[root@i-uy96hjjz ~]# docker exec -it b24be87adc89 /bin/bash
+root@b24be87adc89:/# ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+8: eth0@if9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+    link/ether 02:42:42:42:00:02 brd ff:ff:ff:ff:ff:ff
+    inet 66.66.0.2/16 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::42:42ff:fe42:2/64 scope link
+       valid_lft forever preferred_lft forever
 ```
