@@ -19,7 +19,8 @@ clear-docker-log.sh :
 #!/bin/sh
 truncate -s 0 /var/lib/docker/containers/*/*-json.log
 
-
+crontab -u root -e
+0 0 * * 0 /root/clear-docker-log.sh
 ```
 
 ### 防火墙
