@@ -13,4 +13,16 @@ systemctl start mysqld
 
 mysql_secure_installation
 
+
+```
+
+### 创建用户
+
+```
+create user 'tdnis'@'%' identified by 'Tdcarefor123';
+
+grant all privileges on *.* to 'tdnis'@'%' identified by 'Tdcarefor123';
+
+flush privileges;
+
 ```
