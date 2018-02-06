@@ -20,9 +20,13 @@ yum install -y --setopt=obsoletes=0 \
 
 sudo systemctl enable docker
 
+### 新建 /etc/docker/daemon.json 文件, 写入:
+{
+    "storage-driver":"devicemapper"
+}
+
 sudo systemctl start docker
 
-docker info |grep d_type
 ```
 
 ### 安装完成后修改docker 172.17网段
