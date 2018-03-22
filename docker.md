@@ -93,3 +93,74 @@ root@b24be87adc89:/# ip addr
     inet6 fe80::42:42ff:fe42:2/64 scope link
        valid_lft forever preferred_lft forever
 ```
+
+### 容器无法删除
+
+```
+grep id /proc/*/mountinfo
+ps -p id -o comm=
+```
+
+### docker 安装mysql mongodb rabbitmq
+
+```
+docker run --name mysql -v /etc/my.cnf.d:/etc/mysql/conf.d -v /var/lib/docker/volume/_data/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=Tdcarefor123 -p 3306:3306 -d daocloud.io/mysql:5.6.38
+
+more /etc/my.cnf.d/my.cnf 
+# For advice on how to change settings please see
+# http://dev.mysql.com/doc/refman/5.6/en/server-configuration-defaults.html
+
+[mysqld]
+#
+# Remove leading # and set to the amount of RAM for the most important data
+# cache in MySQL. Start at 70% of total RAM for dedicated server, else 10%.
+# innodb_buffer_pool_size = 128M
+#
+# Remove leading # to turn on a very important data integrity option: logging
+# changes to the binary log between backups.
+# log_bin
+#
+# Remove leading # to set options mainly useful for reporting servers.
+# The server defaults are faster for transactions and fast SELECTs.
+# Adjust sizes as needed, experiment to find the optimal values.
+# join_buffer_size = 128M
+sort_buffer_size = 256M
+innodb_buffer_pool_size=2G
+# read_rnd_buffer_size = 2M
+
+max_connections=1500
+skip-name-resolve
+slow-query_log=ON
+slow_query_log_file=/var/lib/mysql/mysql-slow.log
+long_query_time=5
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+
+# Recommended in standard MySQL setup
+sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES 
+
+character-set-server = utf8    
+collation-server = utf8_unicode_ci    
+init_connect='SET NAMES utf8'    
+skip-character-set-client-handshake = true
+
+[mysqld_safe]
+log-error=/var/lib/mysql/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
+
+[client]  
+default-character-set=utf8  
+[mysql]  
+default-character-set = utf8
+
+docker run --name mongodb -v /var/lib/docker/volume/_data/mongo:/var/lib/mongodata -p 27017:27017 -d daocloud.io/mongo:3.5
+
+docker run -d --hostname rabbitmq --name rabbitmq -p 5672:5672 -p 15672:15672 daocloud.io/rabbitmq:3-management
+
+docker network connect networkName containerid
+
+docker network inspect containerid
+```
