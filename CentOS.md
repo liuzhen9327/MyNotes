@@ -121,6 +121,7 @@ yum install -y system-config-services
 ### 安装redis
 
 ```
+6.5
 
 http://www.cnblogs.com/haoxinyue/p/3620648.html
 
@@ -130,6 +131,14 @@ http://www.cnblogs.com/haoxinyue/p/3620648.html
 
 http://www.tuicool.com/articles/aQbQ3u
 
+7
+yum install -y epel-release
+yum install -y redis
+vi /etc/redis.conf
+找到下面这一行并注释
+bind 127.0.0.1
+service redis start  
+chkconfig redis on
 ```
 
 ### 清空redis所有key
