@@ -164,3 +164,11 @@ http://chwshuang.iteye.com/blog/1881391
 https://segmentfault.com/a/1190000002926477
 
 ```
+
+### docker安装sqlserver
+```
+
+sudo docker pull microsoft/mssql-server-linux:2017-latest
+
+sudo docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=Tdcarefor123!@#' -p 1401:1433 -v /var/lib/docker/volumes/sqlserver:/var/opt/mssql --name sqlserver -d microsoft/mssql-server-linux:2017-latest
+```
