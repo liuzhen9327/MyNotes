@@ -140,3 +140,27 @@ COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
 
+
+
+-- ----------------------------
+--  Table structure for `templateData`
+-- ----------------------------
+DROP TABLE IF EXISTS `templateData`;
+CREATE TABLE `templateData` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `lineIndex` int(11) DEFAULT NULL,
+  `colIndex` int(11) DEFAULT NULL,
+  `itemId` int(11) DEFAULT NULL COMMENT '0:不需要结果类型  1:checkbox 2:input 3:textarea',
+  `templateId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Records of `templateData`
+-- ----------------------------
+BEGIN;
+INSERT INTO `templateData` VALUES ('1', '0', '0', '1', '1'), ('2', '0', '1', '2', '1'), ('3', '0', '2', '3', '1'), ('4', '0', '3', '4', '1');
+COMMIT;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
