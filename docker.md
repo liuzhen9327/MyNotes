@@ -4,6 +4,10 @@ alias dockercleanc='docker rm $(docker ps -a -q)'
 
 dockercleanc
 ```
+### 删除所有镜像
+```
+docker rmi `docker images -q`
+```
 
 ### 安装
 
