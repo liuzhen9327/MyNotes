@@ -3,6 +3,7 @@ rsync -av dir targetdir
 ```
 
 netstat -anp|grep 8080
+yum install net-tools
 
 ```
 
