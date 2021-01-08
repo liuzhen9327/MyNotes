@@ -173,3 +173,43 @@ sudo docker pull microsoft/mssql-server-linux:2017-latest
 
 sudo docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=Tdcarefor123!@#' -p 1401:1433 -v /var/lib/docker/volumes/sqlserver:/var/opt/mssql --name sqlserver -d microsoft/mssql-server-linux:2017-latest
 ```
+
+### centos6 更新yum源
+```
+vi /etc/yum.repos.d/CentOS-Base.repo
+
+[base]
+name=CentOS-6
+failovermethod=priority
+baseurl=https://vault.centos.org/6.9/os/x86_64/
+gpgcheck=0
+
+vi /etc/yum.repos.d/epel.repo
+
+[epel]
+name=Extra Packages for Enterprise Linux 6 - $basearch
+baseurl=https://archives.fedoraproject.org/pub/archive/epel/6/$basearch
+failovermethod=priority
+enabled=1
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
+ 
+[epel-debuginfo]
+name=Extra Packages for Enterprise Linux 6 - $basearch - Debug
+baseurl=https://archives.fedoraproject.org/pub/archive/epel/6/$basearch/debug
+failovermethod=priority
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
+gpgcheck=0
+ 
+[epel-source]
+name=Extra Packages for Enterprise Linux 6 - $basearch - Source
+baseurl=https://archives.fedoraproject.org/pub/archive/epel/6/SRPMS
+failovermethod=priority
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
+gpgcheck=0
+
+yum clean all
+yum makecache
+```
